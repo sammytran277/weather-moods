@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/weather-moods/static/css/main.5f361e03.chunk.css",
-    "main.js": "/weather-moods/static/js/main.b04e4219.chunk.js",
-    "main.js.map": "/weather-moods/static/js/main.b04e4219.chunk.js.map",
+    "main.js": "/weather-moods/static/js/main.acbeecae.chunk.js",
+    "main.js.map": "/weather-moods/static/js/main.acbeecae.chunk.js.map",
     "runtime-main.js": "/weather-moods/static/js/runtime-main.120b113d.js",
     "runtime-main.js.map": "/weather-moods/static/js/runtime-main.120b113d.js.map",
-    "static/js/2.1f18e49b.chunk.js": "/weather-moods/static/js/2.1f18e49b.chunk.js",
-    "static/js/2.1f18e49b.chunk.js.map": "/weather-moods/static/js/2.1f18e49b.chunk.js.map",
+    "static/js/2.263fe6f7.chunk.js": "/weather-moods/static/js/2.263fe6f7.chunk.js",
+    "static/js/2.263fe6f7.chunk.js.map": "/weather-moods/static/js/2.263fe6f7.chunk.js.map",
     "index.html": "/weather-moods/index.html",
-    "precache-manifest.ad0942b8c8072c86e410c5797aee7801.js": "/weather-moods/precache-manifest.ad0942b8c8072c86e410c5797aee7801.js",
+    "precache-manifest.d4d3aa76f8fe5cce2ca292abda40a5a9.js": "/weather-moods/precache-manifest.d4d3aa76f8fe5cce2ca292abda40a5a9.js",
     "service-worker.js": "/weather-moods/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/weather-moods/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.1f18e49b.chunk.js.LICENSE.txt": "/weather-moods/static/js/2.1f18e49b.chunk.js.LICENSE.txt",
+    "static/js/2.263fe6f7.chunk.js.LICENSE.txt": "/weather-moods/static/js/2.263fe6f7.chunk.js.LICENSE.txt",
     "static/media/logo.svg": "/weather-moods/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.120b113d.js",
-    "static/js/2.1f18e49b.chunk.js",
+    "static/js/2.263fe6f7.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.b04e4219.chunk.js"
+    "static/js/main.acbeecae.chunk.js"
   ]
 }

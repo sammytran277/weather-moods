@@ -1,0 +1,14 @@
+.search-container {
+    background-image: url('./background-alt.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.magnifying-glass-container {
+    color: red;
+}

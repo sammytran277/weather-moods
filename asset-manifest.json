@@ -1,22 +1,25 @@
 {
   "files": {
-    "main.css": "/weather-moods/static/css/main.3409d449.chunk.css",
-    "main.js": "/weather-moods/static/js/main.bd69b509.chunk.js",
-    "main.js.map": "/weather-moods/static/js/main.bd69b509.chunk.js.map",
+    "main.css": "/weather-moods/static/css/main.1cb60fbc.chunk.css",
+    "main.js": "/weather-moods/static/js/main.56d5d1ff.chunk.js",
+    "main.js.map": "/weather-moods/static/js/main.56d5d1ff.chunk.js.map",
     "runtime-main.js": "/weather-moods/static/js/runtime-main.120b113d.js",
     "runtime-main.js.map": "/weather-moods/static/js/runtime-main.120b113d.js.map",
-    "static/js/2.e7c09eed.chunk.js": "/weather-moods/static/js/2.e7c09eed.chunk.js",
-    "static/js/2.e7c09eed.chunk.js.map": "/weather-moods/static/js/2.e7c09eed.chunk.js.map",
+    "static/js/2.d80dc09c.chunk.js": "/weather-moods/static/js/2.d80dc09c.chunk.js",
+    "static/js/2.d80dc09c.chunk.js.map": "/weather-moods/static/js/2.d80dc09c.chunk.js.map",
     "index.html": "/weather-moods/index.html",
-    "precache-manifest.1295773f6e819c8c761c3e23da528bf1.js": "/weather-moods/precache-manifest.1295773f6e819c8c761c3e23da528bf1.js",
+    "precache-manifest.fde5aba5cc36cc692534e4c874df42a2.js": "/weather-moods/precache-manifest.fde5aba5cc36cc692534e4c874df42a2.js",
     "service-worker.js": "/weather-moods/service-worker.js",
-    "static/css/main.3409d449.chunk.css.map": "/weather-moods/static/css/main.3409d449.chunk.css.map",
-    "static/js/2.e7c09eed.chunk.js.LICENSE.txt": "/weather-moods/static/js/2.e7c09eed.chunk.js.LICENSE.txt"
+    "static/css/main.1cb60fbc.chunk.css.map": "/weather-moods/static/css/main.1cb60fbc.chunk.css.map",
+    "static/js/2.d80dc09c.chunk.js.LICENSE.txt": "/weather-moods/static/js/2.d80dc09c.chunk.js.LICENSE.txt",
+    "static/media/SearchContainer.css": "/weather-moods/static/media/background-alt.f7adf979.png",
+    "static/media/cloudy.svg": "/weather-moods/static/media/cloudy.add62541.svg",
+    "static/media/logo.svg": "/weather-moods/static/media/logo.e5f2b478.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.120b113d.js",
-    "static/js/2.e7c09eed.chunk.js",
-    "static/css/main.3409d449.chunk.css",
-    "static/js/main.bd69b509.chunk.js"
+    "static/js/2.d80dc09c.chunk.js",
+    "static/css/main.1cb60fbc.chunk.css",
+    "static/js/main.56d5d1ff.chunk.js"
   ]
 }

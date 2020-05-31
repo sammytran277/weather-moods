@@ -8,10 +8,10 @@ import Contact from './Contact/Contact';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 ReactDOM.render(
-  <Router>
-    <Route exact path="/weather-moods" component={Home} />
-    <Route path="/weather-moods/about" component={About} />
-    <Route path="/weather-moods/contact" component={Contact} />
+  <Router basename={process.env.PUBLIC_URL}>
+    <Route exact path="/" component={Home} />
+    <Route path="/about" component={About} />
+    <Route path="/contact" component={Contact} />
   </Router>,
   document.getElementById('root')
 );

@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 const Home = () => {
+  console.log("Your base url is: " + process.env.PUBLIC_URL);
   return (
     <div>
       <Header />

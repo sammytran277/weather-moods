@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Home from './Home/Home';
+import About from './About/About';
+import Contact from './Contact/Contact';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 ReactDOM.render(
   <Router>
-    <Route path="/" component={App} />
+    <Route exact path="/weather-moods" component={Home} />
+    <Route path="/weather-moods/about" component={About} />
+    <Route path="/weather-moods/contact" component={Contact} />
   </Router>,
   document.getElementById('root')
 );

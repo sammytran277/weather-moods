@@ -1,11 +1,16 @@
-.weather-card {
-    display: flex;
-    flex-direction: row;
-    width: 100px;
-    height: 100px;
+.temp-avg {
+    font-size: 30px;
 }
 
-.temp-extrema {
-    display: flex;
-    flex-direction: row;
+.day, .temp-container, .weather-icon {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.temp-low {
+    opacity: 0.5;
+}
+
+.show-more {
+    margin: 0 auto;
 }

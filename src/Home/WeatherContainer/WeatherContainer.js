@@ -5,7 +5,7 @@ import WeatherCard from './WeatherCard/WeatherCard';
 
 const WeatherContainer = () => {
   return (
-    <CardGroup className="weather-container">
+    <CardGroup className="weather-container justify-content-center">
       <WeatherCard />
       <WeatherCard />
       <WeatherCard />

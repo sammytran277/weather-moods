@@ -1,3 +1,7 @@
 .weather-container {
     margin: 40px;
 }
+
+.weather-header {
+    margin: 0 auto;
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SearchContainer.css';
 import { Form, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,23 +19,35 @@ const GENRES = [
 ];
 
 const SearchContainer = () => {
+  const [genre, setGenre] = useState("");
+  const [city, setCity] = useState("");
+  const [userInput, setUserInput] = useState("");
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setCity(userInput);
+  }
+
   return (
     <div className="search-container">
       <h1 className="text-white mb-5 text-center">Need music based on the weather?</h1>
-      <Form>
+      <Form onSubmit={(event) => handleSubmit(event)}>
         <Form.Group>
           <Form.Label className="text-white">
             1. Select your music genre
           </Form.Label>
-          <Form.Control as="select">
+          <Form.Control as="select" onChange={(event) => setGenre(event.target.value)}>
             {GENRES.map(genre => <option key={genre}>{genre}</option>)}
           </Form.Control>
         </Form.Group>
         <Form.Group>
           <Form.Label className="text-white">2. Enter your city</Form.Label>
-          <InputGroup>
+          <InputGroup onChange={(event) => setUserInput(event.target.value)}>
             <Form.Control type="text" placeholder="City"></Form.Control>
-            <InputGroup.Append className="magnifying-glass-container">
+            <InputGroup.Append 
+              onClick={(event) => handleSubmit(event)} 
+              className="magnifying-glass-container"
+            >
               <InputGroup.Text>
                 <FontAwesomeIcon icon={faSearch} />
               </InputGroup.Text>
@@ -43,6 +55,8 @@ const SearchContainer = () => {
           </InputGroup>
         </Form.Group>
       </Form>
+      <h3 className="text-white">{(genre !== "") ? genre : "No genre selected"}</h3>
+      <h3 className="text-white">{(city !== "") ? city : "No city entered"}</h3>
     </div>
   );
 }

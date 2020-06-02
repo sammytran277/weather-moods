@@ -1,6 +1,6 @@
 import React from 'react';
 import './WeatherCard.css';
-import { Card } from 'react-bootstrap';
+import { Card, Accordion, Button } from 'react-bootstrap';
 import cloudy from './icons/cloudy.svg';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,9 +14,9 @@ const WeatherCard = () => {
         <span className="temp-high">70 &deg;F</span>
         <span className="temp-low ml-2">60 &deg;F</span>
       </div>
-      <div className="show-more">
-        <FontAwesomeIcon icon={faAngleDown} />
-      </div>
+      <Accordion.Toggle as={Button} variant="link" eventKey="0">
+        <FontAwesomeIcon className="arrow-down" icon={faAngleDown} />
+      </Accordion.Toggle>
     </Card>
   );
 }

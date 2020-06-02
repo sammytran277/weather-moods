@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './SearchContainer.css';
 import { Form, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,16 +18,7 @@ const GENRES = [
   'Christian'
 ];
 
-const SearchContainer = () => {
-  const [genre, setGenre] = useState("");
-  const [city, setCity] = useState("");
-  const [userInput, setUserInput] = useState("");
-  
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setCity(userInput);
-  }
-
+const SearchContainer = ({ setGenre, setUserInput, handleSubmit }) => {
   return (
     <div className="search-container">
       <h1 className="text-white mb-5 text-center">Need music based on the weather?</h1>
@@ -55,8 +46,6 @@ const SearchContainer = () => {
           </InputGroup>
         </Form.Group>
       </Form>
-      <h3 className="text-white">{(genre !== "") ? genre : "No genre selected"}</h3>
-      <h3 className="text-white">{(city !== "") ? city : "No city entered"}</h3>
     </div>
   );
 }

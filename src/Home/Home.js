@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Home.css';
 import Header from '../Header/Header';
 import SearchContainer from './SearchContainer/SearchContainer';
@@ -9,39 +9,35 @@ const Home = () => {
   const [genre, setGenre] = useState("All Genres");
   const [city, setCity] = useState("");
   const [userInput, setUserInput] = useState("");
-
-  useEffect(() => getApiData(genre, city));
-
-  let songNames = [];
-  let songIdentifiers = [];
+  const [weatherData, setWeatherData] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setCity(userInput);
+    getApiData(genre, userInput);
   }
 
   const getApiData = (genre, city) => {
     if (genre !== "" && city !== "") {
       // Make all 3 API calls here, chaining them together
       getWeatherData(city);
-      getMusicData(genre);
-      getMusicIdentifiers(songNames);
     }
   }
 
-  const getWeatherData = (city) => {
-    // Make API call to endpoint here
-    setTimeout(() => console.log("Making Weather API call now..."), 1000);
-  }
+  const getWeatherData = async (city) => {
+    const url = `https://weather-moods-api.herokuapp.com/api/weather/${city}`;
+    const data = await fetch(url)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      return;
+    });
 
-  const getMusicData = (genre) => {
-    // Make API call to endpoint here
-    setTimeout(() => console.log("Making MusixMatch API call now..."), 1000);
-  }
-
-  const getMusicIdentifiers = (songNames) => {
-    // Make API call to endpoint here
-    setTimeout(() => console.log("Getting music URIs..."), 1000);
+    setWeatherData(data); 
   }
 
   return (
@@ -52,7 +48,7 @@ const Home = () => {
         setUserInput={setUserInput}
         handleSubmit={handleSubmit} 
       />
-      <WeatherContainer />
+      {(weatherData === null) ? <div className="empty"></div> : <WeatherContainer city={city} data={weatherData} />}
       <Footer />
     </div>
   );

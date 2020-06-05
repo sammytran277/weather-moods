@@ -5,3 +5,7 @@
 .weather-header {
     margin: 0 auto;
 }
+
+.city {
+    text-transform: capitalize;
+}

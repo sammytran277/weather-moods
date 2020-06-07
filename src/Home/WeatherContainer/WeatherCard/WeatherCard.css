@@ -3,6 +3,11 @@
     text-align: center;
 }
 
+.day {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .temp-low {
     opacity: 0.5;
 }

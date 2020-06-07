@@ -37,6 +37,7 @@ const Home = () => {
       return;
     });
 
+    console.log(data);
     setWeatherData(data); 
   }
 

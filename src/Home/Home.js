@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Spinner } from 'react-bootstrap';
 import './Home.css';
 import Header from '../Header/Header';
 import SearchContainer from './SearchContainer/SearchContainer';
@@ -10,6 +11,7 @@ const Home = () => {
   const [city, setCity] = useState("");
   const [userInput, setUserInput] = useState("");
   const [weatherData, setWeatherData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,6 +27,7 @@ const Home = () => {
   }
 
   const getWeatherData = async (city) => {
+    setLoading(true);
     const url = `https://weather-moods-api.herokuapp.com/api/weather/${city}`;
     const data = await fetch(url)
     .then(response => {
@@ -38,8 +41,27 @@ const Home = () => {
     });
 
     console.log(data);
-    setWeatherData(data); 
+    setWeatherData(data);
   }
+
+  const renderWeatherContainer = () => {
+    if (weatherData !== null) {
+      return (
+        <WeatherContainer city={city} data={weatherData} />
+      );
+    } else if (loading) {
+      return (
+        <div className="loading">
+          Getting your weather data...
+          <Spinner className="ml-3 loading-spinner" animation="border" />
+        </div>
+      );
+    } else {
+      return (
+        <div className="loading"></div>
+      );
+    }
+  };
 
   return (
     <div>
@@ -49,7 +71,7 @@ const Home = () => {
         setUserInput={setUserInput}
         handleSubmit={handleSubmit} 
       />
-      {(weatherData === null) ? <div className="empty"></div> : <WeatherContainer city={city} data={weatherData} />}
+      {renderWeatherContainer()}
       <Footer />
     </div>
   );

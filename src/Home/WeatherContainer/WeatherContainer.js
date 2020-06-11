@@ -32,7 +32,7 @@ const WeatherContainer = (props) => {
               onClick={() => setUnit("C")}
             > &deg;C</span>:
           </h2>
-          <CardGroup className="weather-container justify-content-center">
+          <CardGroup className="weather-container">
             {createWeatherCards()}
           </CardGroup>
         </Card.Header>

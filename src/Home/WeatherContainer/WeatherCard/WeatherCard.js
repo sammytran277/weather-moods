@@ -1,6 +1,6 @@
 import React from 'react';
 import './WeatherCard.css';
-import { Card, Accordion, Button } from 'react-bootstrap';
+import { Card, Accordion } from 'react-bootstrap';
 import clear from './icons/clear.svg';
 import clouds from './icons/clouds.svg';
 import rain from './icons/rain.svg';
@@ -55,7 +55,7 @@ const WeatherCard = ({ data, unit }) => {
   }
 
   return (
-    <Card className="col-md-1 col-sm-1">
+    <Accordion.Toggle className="accordion-btn" eventKey="0">
       <Card.Title className="day">{getDay()}</Card.Title>
       <img 
         className="weather-icon" 
@@ -68,10 +68,9 @@ const WeatherCard = ({ data, unit }) => {
         <span className="temp-high">{convertUnits(data.temp.max)} &deg;{unit}</span>
         <span className="temp-low ml-2">{convertUnits(data.temp.min)} &deg;{unit}</span>
       </div>
-      <Accordion.Toggle as={Button} variant="link" eventKey="0">
-        <FontAwesomeIcon className="arrow-down" icon={faAngleDown} />
-      </Accordion.Toggle>
-    </Card>
+      
+      <FontAwesomeIcon className="arrow-down" icon={faAngleDown} />
+    </Accordion.Toggle>
   );
 }
 

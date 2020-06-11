@@ -1,4 +1,5 @@
 .day, .temp-container, .weather-icon {
+    color: black;
     margin: 0 auto;
     text-align: center;
 }
@@ -14,4 +15,24 @@
 
 .arrow-down {
     color: black;
+}
+
+.accordion-btn {
+    height: 136px;
+    width: 136px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.accordion-btn:hover {
+    background-color: lightgoldenrodyellow;
+}
+
+.accordion-btn:focus {
+    outline: none;
+    box-shadow: none;
+    border: 2px solid #448AFF;
 }

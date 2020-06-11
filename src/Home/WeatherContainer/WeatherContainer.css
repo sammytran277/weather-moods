@@ -9,3 +9,7 @@
 .city {
     text-transform: capitalize;
 }
+
+.inactive {
+    opacity: 0.5;
+}

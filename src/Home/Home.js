@@ -47,7 +47,10 @@ const Home = () => {
   const renderWeatherContainer = () => {
     if (weatherData !== null) {
       return (
-        <WeatherContainer city={city} data={weatherData} />
+        <WeatherContainer 
+          city={city} 
+          data={weatherData}
+        />
       );
     } else if (loading) {
       return (

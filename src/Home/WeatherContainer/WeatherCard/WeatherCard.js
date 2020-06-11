@@ -8,9 +8,9 @@ import snow from './icons/snow.svg';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const WeatherCard = (props) => {
+const WeatherCard = ({ data, unit }) => {
   const getIcon = () => {
-    switch(props.data.weather[0].main.toLowerCase()) {
+    switch(data.weather[0].main.toLowerCase()) {
       case 'clear':
         return clear;
       case 'clouds':
@@ -25,7 +25,7 @@ const WeatherCard = (props) => {
   }
 
   const getDay = () => {
-    let d = new Date(props.data.dt * 1000);
+    let d = new Date(data.dt * 1000);
     switch (d.getDay()) {
       case 0:
         return 'Sun';
@@ -46,19 +46,27 @@ const WeatherCard = (props) => {
     }
   }
 
+  const convertUnits = (temp) => {
+    if (unit === "F") {
+      return Math.round(temp);
+    } else {
+      return Math.round((temp - 32) * 5 / 9);
+    }
+  }
+
   return (
     <Card className="col-md-1 col-sm-1">
       <Card.Title className="day">{getDay()}</Card.Title>
       <img 
         className="weather-icon" 
         src={getIcon()} 
-        alt={props.data.weather[0].main.toLowerCase()} 
+        alt={data.weather[0].main.toLowerCase()} 
         height="50" 
         width="50" 
       />
       <div className="temp-container">
-        <span className="temp-high">{Math.round(props.data.temp.max)} &deg;F</span>
-        <span className="temp-low ml-2">{Math.round(props.data.temp.min)} &deg;F</span>
+        <span className="temp-high">{convertUnits(data.temp.max)} &deg;{unit}</span>
+        <span className="temp-low ml-2">{convertUnits(data.temp.min)} &deg;{unit}</span>
       </div>
       <Accordion.Toggle as={Button} variant="link" eventKey="0">
         <FontAwesomeIcon className="arrow-down" icon={faAngleDown} />

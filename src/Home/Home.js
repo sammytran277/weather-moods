@@ -6,6 +6,10 @@ import SearchContainer from './SearchContainer/SearchContainer';
 import WeatherContainer from './WeatherContainer/WeatherContainer';
 import Footer from '../Footer/Footer';
 
+const API_URL = (process.env.REACT_APP_ENV === "development") ? 
+  "https://weather-moods-api.herokuapp.com" : 
+  "http://192.168.99.100:8000";
+
 const Home = () => {
   const [genre, setGenre] = useState("All Genres");
   const [city, setCity] = useState("");
@@ -28,7 +32,7 @@ const Home = () => {
 
   const getWeatherData = async (city) => {
     setLoading(true);
-    const url = `https://weather-moods-api.herokuapp.com/api/weather/${city}`;
+    const url = `${API_URL}/api/weather/${city}`;
     const data = await fetch(url)
     .then(response => {
       if (response.ok) {
@@ -45,6 +49,7 @@ const Home = () => {
   }
 
   const renderWeatherContainer = () => {
+    console.log(process.env.REACT_APP_ENV);
     if (weatherData !== null) {
       return (
         <WeatherContainer 

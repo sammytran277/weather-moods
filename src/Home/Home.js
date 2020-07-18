@@ -6,9 +6,9 @@ import SearchContainer from './SearchContainer/SearchContainer';
 import WeatherContainer from './WeatherContainer/WeatherContainer';
 import Footer from '../Footer/Footer';
 
-const API_URL = (process.env.REACT_APP_ENV === "development") ? 
-  "https://weather-moods-api.herokuapp.com" : 
-  "http://192.168.99.100:8000";
+const API_URL = (process.env.REACT_APP_ENV === "production") ? 
+  "http://192.168.99.100:8000" :
+  "https://weather-moods-api.herokuapp.com";
 
 const Home = () => {
   const [genre, setGenre] = useState("All Genres");

@@ -1,36 +1,43 @@
-import React, { useState } from 'react';
-import './WeatherContainer.css';
-import { CardGroup, Accordion, Card } from 'react-bootstrap';
-import WeatherCard from './WeatherCard/WeatherCard';
+import React, { useState } from "react";
+import "./WeatherContainer.css";
+import { CardGroup, Accordion, Card } from "react-bootstrap";
+import WeatherCard from "./WeatherCard/WeatherCard";
+import MusicSuggestion from "./MusicSuggestion/MusicSuggestion";
 
 const WeatherContainer = (props) => {
   const [unit, setUnit] = useState("F");
 
   const createWeatherCards = () => {
-    return props.data.daily.slice(0, 7).map(day => { 
-      return (
-        <WeatherCard key={day.dt} data={day} unit={unit} />
-      );
+    return props.data.daily.slice(0, 7).map((day) => {
+      return <WeatherCard key={day.dt} data={day} unit={unit} />;
     });
-  }
+  };
 
   return (
     <Accordion>
       <Card>
         <Card.Header>
           <h2 className="mt-3 text-center">
-            Seven day weather forecast for 
+            Seven day weather forecast for
             <span className="city">{" " + props.city + ", "}</span> in
             <span
-              className={(unit === "F") ? "" : "inactive"} 
-              style={{"cursor": "pointer"}} 
+              className={unit === "F" ? "" : "inactive"}
+              style={{ cursor: "pointer" }}
               onClick={() => setUnit("F")}
-            > &deg;F </span> | 
-            <span 
-              className={(unit === "C") ? " ": "inactive"}
-              style={{"cursor": "pointer"}}  
+            >
+              {" "}
+              &deg;F{" "}
+            </span>{" "}
+            |
+            <span
+              className={unit === "C" ? " " : "inactive"}
+              style={{ cursor: "pointer" }}
               onClick={() => setUnit("C")}
-            > &deg;C</span>:
+            >
+              {" "}
+              &deg;C
+            </span>
+            :
           </h2>
           <CardGroup className="weather-container">
             {createWeatherCards()}
@@ -38,11 +45,13 @@ const WeatherContainer = (props) => {
         </Card.Header>
         <Accordion.Collapse eventKey="0">
           {/* This Card.Body will need to become its own component */}
-          <Card.Body>Hello! I'm the body</Card.Body>
+          <Card.Body>
+            <MusicSuggestion />
+          </Card.Body>
         </Accordion.Collapse>
       </Card>
     </Accordion>
   );
-}
+};
 
 export default WeatherContainer;

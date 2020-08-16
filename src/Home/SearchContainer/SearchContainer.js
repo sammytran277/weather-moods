@@ -12,7 +12,7 @@ const GENRES = [
   'R&B', 
   'Punk', 
   'Country', 
-  'Indie', 
+  'Indie Rock', 
   'Latin', 
   'Jazz',
   'Christian'

@@ -9,7 +9,6 @@ const Footer = () => {
     <Navbar 
       className="custom-footer justify-content-center" 
       expand="lg"
-      sticky="bottom"
     >
       <Navbar.Text className="text-white">
         Made with <span className="heart">&hearts;</span> by Sammy Tran

@@ -1,0 +1,14 @@
+.music-suggestion-container {
+  display: flex;
+  padding: 10px 100px;
+}
+
+.suggestion-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.spotify-widget {
+  margin-left: auto;
+}

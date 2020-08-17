@@ -5,11 +5,27 @@ import WeatherCard from "./WeatherCard/WeatherCard";
 import MusicSuggestion from "./MusicSuggestion/MusicSuggestion";
 
 const WeatherContainer = (props) => {
+  const [active, setActive] = useState(props.songs[0]);
   const [unit, setUnit] = useState("F");
 
+  const handleAccordion = (index) => {
+    console.log("Switching to " + index);
+    console.log(props.songs[index]);
+    setActive(props.songs[index]);
+  };
+
   const createWeatherCards = () => {
-    return props.data.daily.slice(0, 7).map((day) => {
-      return <WeatherCard key={day.dt} data={day} unit={unit} />;
+    console.log("Songs: " + props.songs);
+    console.log("The active song:" + active);
+    return props.data.daily.slice(0, 7).map((day, idx) => {
+      return (
+        <WeatherCard
+          key={day.dt}
+          data={day}
+          unit={unit}
+          onclick={() => handleAccordion(idx)}
+        />
+      );
     });
   };
 
@@ -44,9 +60,8 @@ const WeatherContainer = (props) => {
           </CardGroup>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
-          {/* This Card.Body will need to become its own component */}
           <Card.Body>
-            <MusicSuggestion />
+            <MusicSuggestion song={active} />
           </Card.Body>
         </Accordion.Collapse>
       </Card>

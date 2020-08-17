@@ -8,7 +8,7 @@ import snow from './icons/snow.svg';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const WeatherCard = ({ data, unit }) => {
+const WeatherCard = ({ data, unit, onclick }) => {
   const getIcon = () => {
     switch(data.weather[0].main.toLowerCase()) {
       case 'clear':
@@ -55,7 +55,7 @@ const WeatherCard = ({ data, unit }) => {
   }
 
   return (
-    <Accordion.Toggle className="accordion-btn" eventKey="0">
+    <Accordion.Toggle className="accordion-btn" eventKey="0" onClick={onclick}>
       <Card.Title className="day">{getDay()}</Card.Title>
       <img 
         className="weather-icon" 

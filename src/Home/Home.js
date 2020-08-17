@@ -32,10 +32,11 @@ const Home = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [weekWeather, setWeekWeather] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
+  const [songs, setSongs] = useState([{"songName": "", "artistName": "", "uri": ""}]);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = (event) => {
-    console.log(genre);
+    // console.log(genre);
     event.preventDefault();
     setCity(userInput);
     getApiData(genre, userInput);
@@ -71,7 +72,7 @@ const Home = () => {
         return;
       });
 
-    console.log(data);
+    // console.log(data);
     setWeatherData(data);
     setWeekWeather(extractWeather(data));
   };
@@ -82,12 +83,50 @@ const Home = () => {
       for (let i = 0; i < weekWeather.length; i++) {
         music[i] = await getMusicSuggestion(weekWeather[i]);
       }
-      console.log(music);
+      // console.log(music);
       setSuggestions(music);
     }
 
     getMusicSuggestions();
   }, [weekWeather]);
+
+  useEffect(() => {
+    async function getIdentifiers() {
+      if (suggestions.length == 0) {
+        console.log("Something went wrong with suggestions");
+        return;
+      }
+
+      const data = [...suggestions];
+      for (let i = 0; i < data.length; i++) {
+        data[i]["uri"] = await getIdentifier(data[i].artistName, data[i].songName);
+      }
+
+      setSongs(data);
+    }
+
+    getIdentifiers();
+  }, [suggestions]);
+
+  const getIdentifier = async (artist, song) => {
+    const url = `${API_URL}/api/identifier/${artist}/${song}`;
+    const data = await fetch(url)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        return;
+      })
+
+      if (data["uri"] !== "") {
+        data["uri"] = data["uri"].split(":")[2];
+      }
+
+      return data["uri"];
+  };
 
   const getMusicSuggestion = async (weather) => {
     const url = `${API_URL}/api/music/${weather}/${GENRE_ID[genre]}`;
@@ -107,7 +146,6 @@ const Home = () => {
   };
 
   const getRandomSong = (trackList) => {
-    console.log(trackList.length);
     let random = Math.floor(Math.random() * trackList.length);
     let randomSong = trackList[random].track.track_name;
 
@@ -126,7 +164,7 @@ const Home = () => {
 
   const renderWeatherContainer = () => {
     if (weatherData !== null) {
-      return <WeatherContainer city={city} data={weatherData} />;
+      return <WeatherContainer city={city} data={weatherData} songs={songs} />;
     } else if (loading) {
       return (
         <div className="loading">

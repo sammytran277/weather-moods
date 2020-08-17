@@ -30,6 +30,7 @@ const Home = () => {
   const [city, setCity] = useState("");
   const [userInput, setUserInput] = useState("");
   const [weatherData, setWeatherData] = useState(null);
+  const [weekWeather, setWeekWeather] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -72,19 +73,56 @@ const Home = () => {
 
     console.log(data);
     setWeatherData(data);
-    setSuggestions(extractWeather(data));
+    setWeekWeather(extractWeather(data));
   };
 
   useEffect(() => {
-    for (let i = 0; i < suggestions.length; i++) {
-      getMusicSuggestions(suggestions[i]);
+    async function getMusicSuggestions() {
+      const music = [...weekWeather]; 
+      for (let i = 0; i < weekWeather.length; i++) {
+        music[i] = await getMusicSuggestion(weekWeather[i]);
+      }
+      console.log(music);
+      setSuggestions(music);
     }
-  }, [suggestions]);
 
-  const getMusicSuggestions = async (weather) => {
+    getMusicSuggestions();
+  }, [weekWeather]);
+
+  const getMusicSuggestion = async (weather) => {
     const url = `${API_URL}/api/music/${weather}/${GENRE_ID[genre]}`;
-    console.log(url);
+    const data = await fetch(url)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        return;
+      });
+
+    console.log(data);
+    return getRandomSong(data.message.body.track_list);
   };
+
+  const getRandomSong = (trackList) => {
+    console.log(trackList.length);
+    let random = Math.floor(Math.random() * trackList.length);
+    let randomSong = trackList[random].track.track_name;
+
+    while (suggestions.filter(suggestion => suggestion.songName === randomSong).length !== 0) {
+      random = Math.floor(Math.random() * trackList.length);
+      randomSong = trackList[random].track.track_name;
+    }
+
+    let artist = trackList[random].track.artist_name;
+
+    return {
+      "songName": randomSong, 
+      "artistName": artist,
+    };
+  }
 
   const renderWeatherContainer = () => {
     if (weatherData !== null) {
